@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-background: #09090B;
+  --color-surface: #101014;
+  --color-card: #18181B;
+  --color-border: #27272A;
+  --color-border-hover: #3F3F46;
+  --color-text: #FAFAFA;
+  --color-muted: #A1A1AA;
+  --grid-dot: #5d4037;
+  --grid-glow: rgba(212, 175, 55, 0.8);
+  --grid-hover: #d4af37;
+}
+
+.light {
+  --color-background: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-card: #F4F4F5;
+  --color-border: #E4E4E7;
+  --color-border-hover: #D4D4D8;
+  --color-text: #09090B;
+  --color-muted: #71717A;
+  --grid-dot: #94A3B8;
+  --grid-glow: rgba(37, 99, 235, 0.5);
+  --grid-hover: #1D4ED8;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-card: var(--color-card);
+  --color-border: var(--color-border);
+  --color-border-hover: var(--color-border-hover);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  
+  /* Fixed Professional Accent - Cobalt-like tech blue */
+  --color-accent: #3B82F6;
+  --color-accent-soft: rgba(59, 130, 246, 0.1);
+  
+  --color-green-custom: #10B981;
+  --color-red-custom: #EF4444;
+  --color-amber-custom: #F59E0B;
+  --color-blue-custom: #3B82F6;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes scan {
+  from { top: -200%; }
+  to { top: 200%; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+}
+
+@keyframes tech-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+}
+
+.animate-flicker {
+  animation: flicker 4s linear infinite;
+}
+
+.tech-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--color-accent);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.group:hover .tech-corner {
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+}
